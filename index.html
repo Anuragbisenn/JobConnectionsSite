@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Connections Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔗 LinkedIn Connections Viewer</h1>
+            <p>Navigate through your connections one by one</p>
+        </header>
+
+        <div class="navigation-container">
+            <button id="prevBtn" class="nav-btn" disabled>⬅️ Previous</button>
+            <div class="row-counter">
+                <span id="currentRow">1</span> of <span id="totalRows">0</span>
+            </div>
+            <button id="nextBtn" class="nav-btn">Next ➡️</button>
+        </div>
+
+        <div class="jump-container">
+            <input type="number" id="jumpInput" placeholder="Jump to record #" min="1" />
+            <button id="jumpBtn" class="jump-btn">Go</button>
+        </div>
+
+        <div id="dataDisplay" class="data-display">
+            <!-- CSV row data will be displayed here -->
+        </div>
+
+        <div id="loading" class="loading">
+            Loading connections...
+        </div>
+
+        <div id="noData" class="no-data" style="display: none;">
+            No data available.
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
