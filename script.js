@@ -54,6 +54,12 @@ class CSVViewer {
         this.prevResultBtn.addEventListener('click', () => this.previousResult());
         this.nextResultBtn.addEventListener('click', () => this.nextResult());
         
+        // Filter tag event listeners
+        this.setupFilterTags();
+        
+        // Suggest filters button event listener
+        this.setupSuggestFiltersButton();
+        
         // Enter key on search input
         this.companySearch.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
@@ -323,6 +329,10 @@ class CSVViewer {
         this.resultsCount.textContent = this.filteredData.length;
         this.totalResults.textContent = this.filteredData.length;
         
+        // Hide main navigation when search is active
+        document.querySelector('.navigation-container').style.display = 'none';
+        document.querySelector('.jump-container').style.display = 'none';
+        
         this.displayCurrentRow();
         this.updateNavigation();
         this.updateSearchNavigation();
@@ -337,6 +347,23 @@ class CSVViewer {
         this.searchResults.style.display = 'none';
         this.clearSearchBtn.style.display = 'none';
         this.companySearch.value = '';
+        
+        // Show main navigation when search is cleared
+        document.querySelector('.navigation-container').style.display = 'flex';
+        document.querySelector('.jump-container').style.display = 'flex';
+        
+        // Remove active class from all filter tags
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.classList.remove('active');
+        });
+        
+        // Reset suggest filters button
+        const suggestBtn = document.getElementById('suggestFiltersBtn');
+        const filterSection = document.getElementById('filterTagsSection');
+        if (suggestBtn && filterSection) {
+            filterSection.style.display = 'none';
+            suggestBtn.textContent = '💡 Suggest Filters';
+        }
         
         this.displayCurrentRow();
         this.updateNavigation();
@@ -366,6 +393,41 @@ class CSVViewer {
         this.currentResult.textContent = this.currentResultIndex + 1;
         this.prevResultBtn.disabled = this.currentResultIndex === 0;
         this.nextResultBtn.disabled = this.currentResultIndex === this.filteredData.length - 1;
+    }
+
+    setupSuggestFiltersButton() {
+        const suggestBtn = document.getElementById('suggestFiltersBtn');
+        const filterSection = document.getElementById('filterTagsSection');
+        
+        if (suggestBtn && filterSection) {
+            suggestBtn.addEventListener('click', () => {
+                if (filterSection.style.display === 'none') {
+                    filterSection.style.display = 'block';
+                    suggestBtn.textContent = '🔼 Hide Filters';
+                } else {
+                    filterSection.style.display = 'none';
+                    suggestBtn.textContent = '💡 Suggest Filters';
+                }
+            });
+        }
+    }
+
+    setupFilterTags() {
+        const filterTags = document.querySelectorAll('.filter-tag');
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active class from all tags
+                filterTags.forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tag
+                tag.classList.add('active');
+                
+                // Set search input value and trigger search
+                const filterValue = tag.getAttribute('data-filter');
+                this.companySearch.value = filterValue;
+                this.searchByCompany();
+            });
+        });
     }
 
     escapeHtml(text) {

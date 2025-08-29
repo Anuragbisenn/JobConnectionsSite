@@ -1,6 +1,6 @@
 # LinkedIn Connections Viewer
 
-A mobile-optimized web application to browse through your LinkedIn connections one by one.
+A responsive web application designed to help students and professionals navigate LinkedIn connections data efficiently. Optimized for both desktop and mobile devices with GitHub Pages deployment support.
 
 ## Features
 

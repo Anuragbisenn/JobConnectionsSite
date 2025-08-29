@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#2c3e50">
+    <meta name="description" content="LinkedIn Connections Viewer - Your Bridge to IT Career Opportunities">
     <title>LinkedIn Connections Viewer - Career Bridge for Students</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -76,6 +78,62 @@
                     <input type="text" id="companySearch" placeholder="Search by company name..." />
                     <button id="searchBtn" class="search-btn">🔍 Search</button>
                     <button id="clearSearchBtn" class="clear-btn" style="display: none;">✕ Clear</button>
+                </div>
+                
+                <!-- Suggest Filters Button -->
+                <div class="suggest-filters-container">
+                    <button id="suggestFiltersBtn" class="suggest-filters-btn">💡 Suggest Filters</button>
+                </div>
+                
+                <!-- Filter Tags (Hidden by default) -->
+                <div class="filter-tags-section" id="filterTagsSection" style="display: none;">
+                    <h4>HR Job Roles:</h4>
+                    <div class="filter-tags">
+                        <span class="filter-tag" data-filter="HR Manager">HR Manager</span>
+                        <span class="filter-tag" data-filter="HR Executive">HR Executive</span>
+                        <span class="filter-tag" data-filter="Recruiter">Recruiter</span>
+                        <span class="filter-tag" data-filter="Talent Acquisition">Talent Acquisition</span>
+                        <span class="filter-tag" data-filter="HR Lead">HR Lead</span>
+                        <span class="filter-tag" data-filter="HR Associate">HR Associate</span>
+                        <span class="filter-tag" data-filter="HR Admin">HR Admin</span>
+                        <span class="filter-tag" data-filter="HR Director">HR Director</span>
+                    </div>
+                    
+                    <h4>HR Specializations:</h4>
+                    <div class="filter-tags">
+                        <span class="filter-tag" data-filter="Recruitment">Recruitment</span>
+                        <span class="filter-tag" data-filter="Human Resources">Human Resources</span>
+                        <span class="filter-tag" data-filter="Talent">Talent</span>
+                        <span class="filter-tag" data-filter="Placement">Placement</span>
+                        <span class="filter-tag" data-filter="Business Partner">Business Partner</span>
+                        <span class="filter-tag" data-filter="Generalist">Generalist</span>
+                        <span class="filter-tag" data-filter="Operations">Operations</span>
+                        <span class="filter-tag" data-filter="Payroll">Payroll</span>
+                    </div>
+                    
+                    <h4>Company Types:</h4>
+                    <div class="filter-tags">
+                        <span class="filter-tag" data-filter="Consultancy">Consultancy</span>
+                        <span class="filter-tag" data-filter="Services">Services</span>
+                        <span class="filter-tag" data-filter="Solutions">Solutions</span>
+                        <span class="filter-tag" data-filter="Technologies">Technologies</span>
+                        <span class="filter-tag" data-filter="Limited">Limited</span>
+                        <span class="filter-tag" data-filter="Pvt">Pvt Ltd</span>
+                        <span class="filter-tag" data-filter="Group">Group</span>
+                        <span class="filter-tag" data-filter="Global">Global</span>
+                    </div>
+                    
+                    <h4>Industries:</h4>
+                    <div class="filter-tags">
+                        <span class="filter-tag" data-filter="Bank">Banking</span>
+                        <span class="filter-tag" data-filter="Finance">Finance</span>
+                        <span class="filter-tag" data-filter="Insurance">Insurance</span>
+                        <span class="filter-tag" data-filter="IT">IT</span>
+                        <span class="filter-tag" data-filter="Healthcare">Healthcare</span>
+                        <span class="filter-tag" data-filter="Manufacturing">Manufacturing</span>
+                        <span class="filter-tag" data-filter="Pharma">Pharma</span>
+                        <span class="filter-tag" data-filter="Education">Education</span>
+                    </div>
                 </div>
                 <div id="searchResults" class="search-results" style="display: none;">
                     <div class="results-header">
