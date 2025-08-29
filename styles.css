@@ -2,6 +2,27 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input {
+    touch-action: manipulation;
+}
+
+.filter-tag {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -539,7 +560,7 @@ header p {
     }
     
     .landing-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
     
     .explore-btn {
@@ -551,7 +572,7 @@ header p {
     }
     
     .explore-text {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 }
 
@@ -565,7 +586,7 @@ header p {
     }
     
     .landing-subtitle {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     .explore-btn {
@@ -576,7 +597,7 @@ header p {
     }
     
     .explore-text {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
     
     .nav-btn {
