@@ -435,3 +435,582 @@ header p {
         transform: translateY(0);
     }
 }
+
+/* Landing Page Styles */
+.landing-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.landing-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: white;
+}
+
+.landing-header h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.landing-subtitle {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    font-weight: 300;
+    animation: fadeInUp 1s ease 0.2s forwards;
+    animation-fill-mode: both;
+}
+
+/* Explore Section Styles */
+.explore-section {
+    text-align: center;
+    margin-top: 40px;
+    animation: fadeInUp 1s ease 0.4s forwards;
+    animation-fill-mode: both;
+}
+
+.explore-btn {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.explore-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(52, 152, 219, 0.6);
+    background: linear-gradient(135deg, #2980b9 0%, #1f5f8b 100%);
+}
+
+.explore-btn:active {
+    transform: translateY(-1px);
+}
+
+.explore-text {
+    color: white;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-top: 15px;
+}
+
+/* Main App Styles */
+.main-app {
+    min-height: 100vh;
+}
+
+.back-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Mobile responsiveness for Landing Page */
+@media (max-width: 768px) {
+    .landing-header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .landing-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .explore-btn {
+        padding: 18px 35px;
+        font-size: 1.1rem;
+    }
+    
+    .explore-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .landing-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .landing-subtitle {
+        font-size: 1rem;
+    }
+    
+    .explore-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+    }
+    
+    .explore-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* Disclaimer Section Styles */
+.disclaimer-section {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.disclaimer-content {
+    padding: 30px;
+}
+
+.disclaimer-section h2 {
+    color: #2c3e50;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.disclaimer-text p {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.disclaimer-text p strong {
+    color: #e74c3c;
+    font-weight: 700;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.benefits-list li {
+    background: #f8f9fa;
+    border-left: 4px solid #3498db;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.benefits-list li:hover {
+    background: #e3f2fd;
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+}
+
+.benefits-list li strong {
+    color: #3498db;
+    font-weight: 700;
+}
+
+.disclaimer-note {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.disclaimer-note p {
+    margin: 0;
+    color: #856404;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Mobile responsiveness for Disclaimer section */
+@media (max-width: 768px) {
+    .disclaimer-content {
+        padding: 20px;
+    }
+    
+    .disclaimer-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .disclaimer-text p {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+    
+    .benefits-list li {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+    }
+    
+    .disclaimer-note {
+        padding: 15px;
+        margin-top: 20px;
+    }
+    
+    .disclaimer-note p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .disclaimer-content {
+        padding: 15px;
+    }
+    
+    .disclaimer-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .disclaimer-text p {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+    
+    .benefits-list li {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+    
+    .disclaimer-note {
+        padding: 12px;
+        margin-top: 15px;
+    }
+    
+    .disclaimer-note p {
+        font-size: 0.85rem;
+    }
+}
+
+/* Search Container Styles */
+.search-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.search-input-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+#companySearch {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#companySearch:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.search-btn {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    background: #219a52;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.4);
+}
+
+.clear-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.clear-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+}
+
+.search-results {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 15px;
+}
+
+.results-header {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+.results-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+
+.result-nav-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #3498db;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.result-nav-btn:hover:not(:disabled) {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.result-nav-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.result-counter {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Mobile responsiveness for Search */
+@media (max-width: 768px) {
+    .search-container {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+    
+    .search-input-group {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    #companySearch {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+    
+    .search-btn, .clear-btn {
+        width: 100%;
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .results-navigation {
+        flex-direction: column;
+        gap: 10px;
+        padding: 12px 15px;
+    }
+    
+    .result-nav-btn {
+        width: 100%;
+        min-width: auto;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .result-counter {
+        font-size: 0.95rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        padding: 12px;
+    }
+    
+    #companySearch {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+    
+    .search-btn, .clear-btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .results-header {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+    
+    .results-navigation {
+        padding: 10px 12px;
+    }
+    
+    .result-nav-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .result-counter {
+        font-size: 0.9rem;
+    }
+}
+
+/* About Section Styles */
+.about-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    margin-top: 30px;
+    padding: 0;
+}
+
+.about-section .container {
+    padding: 30px;
+}
+
+.about-section h2 {
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.developer-info {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.developer-info h3 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+.contact-info strong {
+    color: #3498db;
+}
+
+.contact-info a {
+    color: #3498db;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.contact-info a:hover {
+    color: #2980b9;
+    border-bottom-color: #3498db;
+}
+
+/* Mobile responsiveness for About section */
+@media (max-width: 768px) {
+    .about-section .container {
+        padding: 20px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+    
+    .developer-info {
+        padding: 20px;
+    }
+    
+    .developer-info h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+    }
+    
+    .contact-info p {
+        font-size: 1rem;
+        margin: 8px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section .container {
+        padding: 15px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.4rem;
+    }
+    
+    .developer-info {
+        padding: 15px;
+    }
+    
+    .developer-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+}

@@ -3,41 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LinkedIn Connections Viewer</title>
+    <title>LinkedIn Connections Viewer - Career Bridge for Students</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🔗 LinkedIn Connections Viewer</h1>
-            <p>Navigate through your connections one by one</p>
-        </header>
+    <!-- Landing Page -->
+    <div id="landingPage" class="landing-page">
+        <div class="container">
+            <header class="landing-header">
+                <h1>🔗 LinkedIn Connections Viewer</h1>
+                <p class="landing-subtitle">Your Bridge to IT Career Opportunities</p>
+            </header>
 
-        <div class="navigation-container">
-            <button id="prevBtn" class="nav-btn" disabled>⬅️ Previous</button>
-            <div class="row-counter">
-                <span id="currentRow">1</span> of <span id="totalRows">0</span>
+            <!-- Landing Page Disclaimer Section -->
+            <section class="disclaimer-section">
+                <div class="disclaimer-content">
+                    <h2>🎯 Bridging the Gap Between Students and IT Opportunities</h2>
+                    <div class="disclaimer-text">
+                        <p><strong>Important Notice:</strong> Today's students are facing unprecedented challenges in the IT sector due to limited job availability and lack of clarity on how to reach the right people for job inquiries.</p>
+                        
+                        <p>This platform is designed to provide students with direct exposure to hiring managers and responsible persons in the industry, helping you:</p>
+                        
+                        <ul class="benefits-list">
+                            <li>🎯 <strong>Find Direct Contacts:</strong> Connect with actual hiring managers and decision-makers</li>
+                            <li>💼 <strong>Skip the Queue:</strong> Bypass traditional application processes and reach out directly</li>
+                            <li>🌟 <strong>Build Networks:</strong> Establish meaningful professional connections in the IT industry</li>
+                            <li>📈 <strong>Increase Opportunities:</strong> Access hidden job markets through personal connections</li>
+                        </ul>
+                        
+                        <div class="disclaimer-note">
+                            <p><em>Disclaimer: This tool is intended for educational and networking purposes. Please use professional etiquette when reaching out to connections and respect their time and privacy.</em></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Explore Button -->
+            <div class="explore-section">
+                <button id="exploreBtn" class="explore-btn">
+                    🚀 Explore Connections
+                </button>
+                <p class="explore-text">Start discovering your pathway to IT career success</p>
             </div>
-            <button id="nextBtn" class="nav-btn">Next ➡️</button>
-        </div>
-
-        <div class="jump-container">
-            <input type="number" id="jumpInput" placeholder="Jump to record #" min="1" />
-            <button id="jumpBtn" class="jump-btn">Go</button>
-        </div>
-
-        <div id="dataDisplay" class="data-display">
-            <!-- CSV row data will be displayed here -->
-        </div>
-
-        <div id="loading" class="loading">
-            Loading connections...
-        </div>
-
-        <div id="noData" class="no-data" style="display: none;">
-            No data available.
         </div>
     </div>
+
+    <!-- Main Application (Hidden Initially) -->
+    <div id="mainApp" class="main-app" style="display: none;">
+        <div class="container">
+            <header>
+                <h1>🔗 LinkedIn Connections Viewer</h1>
+                <p>Navigate through your connections one by one</p>
+                <button id="backToLanding" class="back-btn">← Back to Home</button>
+            </header>
+
+            <div class="navigation-container">
+                <button id="prevBtn" class="nav-btn" disabled>⬅️ Previous</button>
+                <div class="row-counter">
+                    <span id="currentRow">1</span> of <span id="totalRows">0</span>
+                </div>
+                <button id="nextBtn" class="nav-btn">Next ➡️</button>
+            </div>
+
+            <div class="jump-container">
+                <input type="number" id="jumpInput" placeholder="Jump to record #" min="1" />
+                <button id="jumpBtn" class="jump-btn">Go</button>
+            </div>
+
+            <!-- Company Search Container -->
+            <div class="search-container">
+                <div class="search-input-group">
+                    <input type="text" id="companySearch" placeholder="Search by company name..." />
+                    <button id="searchBtn" class="search-btn">🔍 Search</button>
+                    <button id="clearSearchBtn" class="clear-btn" style="display: none;">✕ Clear</button>
+                </div>
+                <div id="searchResults" class="search-results" style="display: none;">
+                    <div class="results-header">
+                        <span id="resultsCount">0</span> results found
+                    </div>
+                    <div class="results-navigation">
+                        <button id="prevResultBtn" class="result-nav-btn" disabled>⬅️ Previous</button>
+                        <span class="result-counter">
+                            <span id="currentResult">0</span> of <span id="totalResults">0</span>
+                        </span>
+                        <button id="nextResultBtn" class="result-nav-btn">Next ➡️</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dataDisplay" class="data-display">
+                <!-- CSV row data will be displayed here -->
+            </div>
+
+            <div id="loading" class="loading">
+                Loading connections...
+            </div>
+
+            <div id="noData" class="no-data" style="display: none;">
+                No data available.
+            </div>
+        </div>
+    </div>
+
 
     <script src="data.js"></script>
     <script src="script.js"></script>

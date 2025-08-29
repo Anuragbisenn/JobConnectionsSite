@@ -1,8 +1,11 @@
 class CSVViewer {
     constructor() {
         this.csvData = [];
+        this.filteredData = [];
         this.headers = ['First Name', 'URL', 'Email Address', 'Company', 'Position'];
         this.currentRowIndex = 0;
+        this.currentResultIndex = 0;
+        this.isSearchActive = false;
         
         this.initializeElements();
         this.setupEventListeners();
@@ -19,6 +22,17 @@ class CSVViewer {
         this.noData = document.getElementById('noData');
         this.jumpInput = document.getElementById('jumpInput');
         this.jumpBtn = document.getElementById('jumpBtn');
+        
+        // Search elements
+        this.companySearch = document.getElementById('companySearch');
+        this.searchBtn = document.getElementById('searchBtn');
+        this.clearSearchBtn = document.getElementById('clearSearchBtn');
+        this.searchResults = document.getElementById('searchResults');
+        this.resultsCount = document.getElementById('resultsCount');
+        this.currentResult = document.getElementById('currentResult');
+        this.totalResults = document.getElementById('totalResults');
+        this.prevResultBtn = document.getElementById('prevResultBtn');
+        this.nextResultBtn = document.getElementById('nextResultBtn');
     }
 
     setupEventListeners() {
@@ -31,6 +45,20 @@ class CSVViewer {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 this.jumpToRecord();
+            }
+        });
+        
+        // Search event listeners
+        this.searchBtn.addEventListener('click', () => this.searchByCompany());
+        this.clearSearchBtn.addEventListener('click', () => this.clearSearch());
+        this.prevResultBtn.addEventListener('click', () => this.previousResult());
+        this.nextResultBtn.addEventListener('click', () => this.nextResult());
+        
+        // Enter key on search input
+        this.companySearch.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.searchByCompany();
             }
         });
         
@@ -162,7 +190,9 @@ class CSVViewer {
     }
 
     displayCurrentRow() {
-        if (this.csvData.length === 0) {
+        const dataToUse = this.isSearchActive ? this.filteredData : this.csvData;
+        
+        if (dataToUse.length === 0) {
             this.noData.style.display = 'block';
             this.dataDisplay.style.display = 'none';
             return;
@@ -171,7 +201,8 @@ class CSVViewer {
         this.noData.style.display = 'none';
         this.dataDisplay.style.display = 'block';
 
-        const currentRow = this.csvData[this.currentRowIndex];
+        const currentIndex = this.isSearchActive ? this.currentResultIndex : this.currentRowIndex;
+        const currentRow = dataToUse[currentIndex];
         
         let html = '<div class="row-data">';
         
@@ -236,17 +267,105 @@ class CSVViewer {
     }
 
     updateNavigation() {
+        const dataToUse = this.isSearchActive ? this.filteredData : this.csvData;
+        const currentIndex = this.isSearchActive ? this.currentResultIndex : this.currentRowIndex;
+        
         // Update row counter
-        this.currentRowSpan.textContent = this.currentRowIndex + 1;
-        this.totalRowsSpan.textContent = this.csvData.length;
+        this.currentRowSpan.textContent = currentIndex + 1;
+        this.totalRowsSpan.textContent = dataToUse.length;
         
         // Update button states
-        this.prevBtn.disabled = this.currentRowIndex === 0;
-        this.nextBtn.disabled = this.currentRowIndex === this.csvData.length - 1;
+        this.prevBtn.disabled = currentIndex === 0;
+        this.nextBtn.disabled = currentIndex === dataToUse.length - 1;
         
         // Update button styles
         this.prevBtn.classList.toggle('disabled', this.prevBtn.disabled);
         this.nextBtn.classList.toggle('disabled', this.nextBtn.disabled);
+    }
+
+    // Search functionality
+    searchByCompany() {
+        const searchTerm = this.companySearch.value.trim().toLowerCase();
+        
+        if (!searchTerm) {
+            alert('Please enter a company name to search');
+            return;
+        }
+        
+        // Find company column index
+        const companyColumnIndex = this.headers.findIndex(header => 
+            header.toLowerCase().includes('company')
+        );
+        
+        if (companyColumnIndex === -1) {
+            alert('Company column not found in data');
+            return;
+        }
+        
+        // Filter data by company name
+        this.filteredData = this.csvData.filter(row => {
+            const companyName = (row[companyColumnIndex] || '').toLowerCase();
+            return companyName.includes(searchTerm);
+        });
+        
+        if (this.filteredData.length === 0) {
+            alert(`No employees found for company: "${this.companySearch.value}"`);
+            return;
+        }
+        
+        // Activate search mode
+        this.isSearchActive = true;
+        this.currentResultIndex = 0;
+        
+        // Update UI
+        this.searchResults.style.display = 'block';
+        this.clearSearchBtn.style.display = 'inline-block';
+        this.resultsCount.textContent = this.filteredData.length;
+        this.totalResults.textContent = this.filteredData.length;
+        
+        this.displayCurrentRow();
+        this.updateNavigation();
+        this.updateSearchNavigation();
+    }
+    
+    clearSearch() {
+        this.isSearchActive = false;
+        this.filteredData = [];
+        this.currentResultIndex = 0;
+        
+        // Reset UI
+        this.searchResults.style.display = 'none';
+        this.clearSearchBtn.style.display = 'none';
+        this.companySearch.value = '';
+        
+        this.displayCurrentRow();
+        this.updateNavigation();
+    }
+    
+    previousResult() {
+        if (this.isSearchActive && this.currentResultIndex > 0) {
+            this.currentResultIndex--;
+            this.displayCurrentRow();
+            this.updateNavigation();
+            this.updateSearchNavigation();
+        }
+    }
+    
+    nextResult() {
+        if (this.isSearchActive && this.currentResultIndex < this.filteredData.length - 1) {
+            this.currentResultIndex++;
+            this.displayCurrentRow();
+            this.updateNavigation();
+            this.updateSearchNavigation();
+        }
+    }
+    
+    updateSearchNavigation() {
+        if (!this.isSearchActive) return;
+        
+        this.currentResult.textContent = this.currentResultIndex + 1;
+        this.prevResultBtn.disabled = this.currentResultIndex === 0;
+        this.nextResultBtn.disabled = this.currentResultIndex === this.filteredData.length - 1;
     }
 
     escapeHtml(text) {
@@ -291,7 +410,36 @@ function copyToClipboard(email) {
     });
 }
 
+// Page Navigation Functions
+function showMainApp() {
+    document.getElementById('landingPage').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'block';
+    
+    // Initialize CSV viewer only when entering main app
+    if (!window.csvViewerInstance) {
+        window.csvViewerInstance = new CSVViewer();
+    }
+}
+
+function showLandingPage() {
+    document.getElementById('landingPage').style.display = 'block';
+    document.getElementById('mainApp').style.display = 'none';
+}
+
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new CSVViewer();
+    // Set up navigation event listeners
+    const exploreBtn = document.getElementById('exploreBtn');
+    const backToLandingBtn = document.getElementById('backToLanding');
+    
+    if (exploreBtn) {
+        exploreBtn.addEventListener('click', showMainApp);
+    }
+    
+    if (backToLandingBtn) {
+        backToLandingBtn.addEventListener('click', showLandingPage);
+    }
+    
+    // Show landing page by default
+    showLandingPage();
 });
